@@ -1,4 +1,4 @@
-package com.gi3.avisaux.activity.administrateur;
+package com.gi3.avisaux.activity.enseignant;
 
 import android.app.ListActivity;
 import android.os.Bundle;
@@ -6,24 +6,25 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.gi3.avisaux.R;
-import com.gi3.avisaux.service.AdminService;
+import com.gi3.avisaux.service.EnseignantService;
 import com.gi3.avisaux.utils.AvisArrayAdapter;
 
 public class AvisListActivity extends ListActivity {
 
-    private AdminService adminService = new AdminService();
+    private EnseignantService enseignantService = new EnseignantService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avis_list);
-        loadList();
         ImageView notif = findViewById(R.id.notif);
         notif.setImageResource(R.drawable.avis64);
+
+        loadList();
     }
 
-    public void loadList(){
-        setListAdapter(new AvisArrayAdapter(this,adminService.getAllAvis()));
+    public void loadList() {
+        setListAdapter(new AvisArrayAdapter(this, enseignantService.getMyAvis()));
     }
 
     public void back(View view) {

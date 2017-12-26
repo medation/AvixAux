@@ -33,51 +33,30 @@
             android:layout_weight="0.92"
             android:fontFamily="casual"
             android:paddingLeft="30dp"
-            android:text="Enseignant"
+            android:text="Liste des avis"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="@android:color/background_light"
             android:textSize="36sp" />
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="128dp"
-        android:layout_height="125dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/enseignant128" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="30dp"
-        android:orientation="vertical"
-        android:paddingTop="50dp">
+        android:layout_margin="10dp"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/list_avis"
+        <ImageView
+            android:id="@+id/notif"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/background_light"
-            android:onClick="listerAvisClick"
-            android:text="Lister mes avis" />
+            android:layout_gravity="center" />
 
-        <Button
-            android:id="@+id/add_avis"
+        <ListView
+            android:id="@android:id/list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/background_light"
-            android:onClick="addAvisClick"
-            android:text="Lancer un avis" />
-
-        <Button
-            android:id="@+id/profil"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/background_light"
-            android:onClick="profilClick"
-            android:text="Modifer profil" />
+            android:background="@android:color/background_light" />
 
     </LinearLayout>
 

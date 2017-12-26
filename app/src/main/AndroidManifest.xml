@@ -28,7 +28,11 @@
         <activity android:name=".activity.administrateur.UserListActivity" />
         <activity android:name=".activity.administrateur.AddUserActivity" />
         <activity android:name=".activity.administrateur.AvisListActivity" />
-        <activity android:name=".activity.administrateur.ProfilActivity"></activity>
+        <activity android:name=".activity.administrateur.ProfilActivity" />
+        <activity android:name=".activity.enseignant.AvisListActivity" />
+        <activity android:name=".activity.enseignant.AddAvisActivity" />
+        <activity android:name=".activity.enseignant.ProfilUserActivity" />
+        <activity android:name=".activity.etudiant.AvisListEtudiantActivity"></activity>
     </application>
 
 </manifest>

@@ -17,7 +17,7 @@
         android:orientation="horizontal">
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/back"
+            android:id="@+id/backl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -28,13 +28,13 @@
             app:srcCompat="?attr/homeAsUpIndicator" />
 
         <TextView
-            android:id="@+id/title2"
+            android:id="@+id/title"
             android:layout_width="268dp"
             android:layout_height="match_parent"
             android:layout_weight="0.92"
             android:fontFamily="casual"
             android:paddingLeft="30dp"
-            android:text="Login"
+            android:text="Modifie profil"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="@android:color/background_light"
             android:textSize="36sp" />
@@ -49,15 +49,14 @@
         android:background="@color/colorPrimary"
         android:orientation="vertical"
         android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:paddingTop="50dp">
+        android:paddingRight="30dp">
 
 
         <ImageView
-            android:id="@+id/logo"
+            android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/login128" />
+            app:srcCompat="@drawable/profil128" />
 
         <TextView
             android:id="@+id/error"
@@ -65,18 +64,6 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/holo_red_dark" />
 
-        <EditText
-            android:id="@+id/userName"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@android:color/background_light"
-            android:ems="10"
-            android:hint="Nom d'utilisateur"
-            android:inputType="textPersonName"
-            android:textColor="@android:color/background_light"
-            android:textColorHint="@android:color/background_light"
-            android:textColorLink="@android:color/background_light" />
 
         <EditText
             android:id="@+id/password"
@@ -85,20 +72,57 @@
             android:layout_gravity="center"
             android:backgroundTint="@android:color/background_light"
             android:ems="10"
-            android:hint="Mot de passe"
+            android:hint="Nouveau mot de pass"
             android:inputType="textPassword"
             android:textColor="@android:color/background_light"
             android:textColorHint="@android:color/background_light"
             android:textColorLink="@android:color/background_light" />
 
+        <EditText
+            android:id="@+id/confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@android:color/background_light"
+            android:ems="10"
+            android:hint="Confirmer mot de passe"
+            android:inputType="textPassword"
+            android:textColor="@android:color/background_light"
+            android:textColorHint="@android:color/background_light"
+            android:textColorLink="@android:color/background_light" />
+
+        <EditText
+            android:id="@+id/last_name"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@android:color/background_light"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColor="@android:color/background_light"
+            android:textColorHint="@android:color/background_light"
+            android:textColorLink="@android:color/background_light" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@android:color/background_light"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColor="@android:color/background_light"
+            android:textColorHint="@android:color/background_light"
+            android:textColorLink="@android:color/background_light" />
+
         <Button
-            android:id="@+id/connexion"
+            android:id="@+id/valider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@android:color/background_light"
             android:onClick="onClick"
-            android:text="Se connecter" />
+            android:text="Valider" />
 
 
     </LinearLayout>

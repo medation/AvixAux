@@ -1,8 +1,8 @@
 package com.gi3.avisaux.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public LoginService loginService = new LoginService();
     public Utilisateur user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,5 +53,9 @@ public class LoginActivity extends AppCompatActivity {
             intent.putExtra("user",user);
             startActivity(intent);
         }
+    }
+
+    public void back(View view) {
+        finish();
     }
 }

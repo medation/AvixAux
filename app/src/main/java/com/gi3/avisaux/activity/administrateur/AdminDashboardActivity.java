@@ -1,20 +1,16 @@
 package com.gi3.avisaux.activity.administrateur;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.TextView;
 
 import com.gi3.avisaux.R;
-import com.gi3.avisaux.domain.Utilisateur;
-import com.gi3.avisaux.service.AdminService;
 
 public class AdminDashboardActivity extends AppCompatActivity {
 
-    private AdminService adminService = new AdminService();
+
     private Intent intent;
-    private Utilisateur admin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,5 +41,9 @@ public class AdminDashboardActivity extends AppCompatActivity {
         intent = new Intent(this,AddUserActivity.class);
         intent.putExtras(getIntent());
         startActivity(intent);
+    }
+
+    public void back(View view) {
+        finish();
     }
 }

@@ -21,6 +21,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:clickable="true"
+            android:onClick="back"
             app:backgroundTint="@color/colorPrimaryDark"
             app:fabSize="normal"
             app:srcCompat="?android:attr/actionModeCloseDrawable" />
@@ -71,20 +72,20 @@
             android:text="Ajouter utilisateur" />
 
         <Button
-            android:id="@+id/profil"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/background_light"
-            android:onClick="profilClick"
-            android:text="Modifer profil" />
-
-        <Button
             android:id="@+id/listNotif"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/background_light"
             android:onClick="listerNotifClick"
             android:text="Lister les notifications" />
+
+        <Button
+            android:id="@+id/profil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/background_light"
+            android:onClick="profilClick"
+            android:text="Modifer profil" />
 
     </LinearLayout>
 
