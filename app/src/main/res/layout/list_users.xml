@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="TextView"
-        android:textSize="24sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/name"
@@ -18,7 +18,15 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="TextView"
-        android:textSize="24sp" />
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/role"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Role"
+        android:textSize="18sp" />
 
     <ImageButton
         android:id="@+id/button_delete"

@@ -15,6 +15,21 @@ public class Avis {
     private byte[] doc;
     private String date;
 
+    public Avis() {
+    }
+
+    public Avis(int id, String message, String enseignant, String groupe, String niveau, String filiere, String date) {
+        this.id = id;
+        this.message = message;
+        this.enseignant = enseignant;
+        this.groupe = groupe;
+        this.niveau = niveau;
+        this.filiere = filiere;
+        this.date = date;
+    }
+
+
+
     public int getId() {
         return id;
     }

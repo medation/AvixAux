@@ -18,7 +18,6 @@ import java.util.List;
 public class UserListActivity extends ListActivity {
 
     private AdminService adminService = new AdminService();
-    private ListView listUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +27,6 @@ public class UserListActivity extends ListActivity {
     }
 
     public void loadList(){
-
         setListAdapter(new UserArrayAdapter(this, adminService.getUsers()));
     }
 

@@ -25,7 +25,9 @@
         <activity android:name=".activity.administrateur.AdminDashboardActivity" />
         <activity android:name=".activity.enseignant.EnsDashboardActivity" />
         <activity android:name=".activity.etudiant.StuDashboardActivity" />
-        <activity android:name=".activity.administrateur.UserListActivity"></activity>
+        <activity android:name=".activity.administrateur.UserListActivity" />
+        <activity android:name=".activity.administrateur.AddUserActivity" />
+        <activity android:name=".activity.administrateur.AvisListActivity"></activity>
     </application>
 
 </manifest>

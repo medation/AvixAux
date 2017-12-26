@@ -41,9 +41,11 @@ public class UserArrayAdapter extends ArrayAdapter<Utilisateur> {
 
         TextView name = (TextView) rowView.findViewById(R.id.name);
         TextView lastName = (TextView) rowView.findViewById(R.id.last_name);
+        TextView role = (TextView) rowView.findViewById(R.id.role);
 
         name.setText(users.get(position).getPrenom());
         lastName.setText(users.get(position).getNom());
+        role.setText(users.get(position).getRole());
 
         ImageButton btnDelete = (ImageButton) rowView.findViewById(R.id.button_delete);
 

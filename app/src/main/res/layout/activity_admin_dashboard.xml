@@ -63,12 +63,12 @@
             android:text="Lister les utilisateurs" />
 
         <Button
-            android:id="@+id/listNotif"
+            android:id="@+id/adduser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/background_light"
-            android:onClick="listerNotifClick"
-            android:text="Lister les notifications" />
+            android:onClick="addUserClick"
+            android:text="Ajouter utilisateur" />
 
         <Button
             android:id="@+id/profil"
@@ -79,12 +79,13 @@
             android:text="Modifer profil" />
 
         <Button
-            android:id="@+id/adduser"
+            android:id="@+id/listNotif"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/background_light"
-            android:onClick="addUserClick"
-            android:text="Ajouter utilisateur" />
+            android:onClick="listerNotifClick"
+            android:text="Lister les notifications" />
+
     </LinearLayout>
 
 </LinearLayout>

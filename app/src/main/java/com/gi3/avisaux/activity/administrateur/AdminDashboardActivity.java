@@ -24,7 +24,8 @@ public class AdminDashboardActivity extends AppCompatActivity {
     }
 
     public void listerNotifClick(View view){
-
+        intent = new Intent(this,AvisListActivity.class);
+        startActivity(intent);
     }
 
     public void profilClick(View view){
@@ -32,6 +33,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
     }
 
     public void addUserClick(View view){
-
+        intent = new Intent(this,AddUserActivity.class);
+        startActivity(intent);
     }
 }
