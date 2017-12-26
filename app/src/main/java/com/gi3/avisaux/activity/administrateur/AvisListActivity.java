@@ -2,6 +2,7 @@ package com.gi3.avisaux.activity.administrateur;
 
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import com.gi3.avisaux.R;
 import com.gi3.avisaux.service.AdminService;
@@ -16,6 +17,8 @@ public class AvisListActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avis_list);
         loadList();
+        ImageView notif = (ImageView) findViewById(R.id.notif);
+        notif.setImageResource(R.drawable.avis64);
     }
 
     public void loadList(){

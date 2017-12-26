@@ -32,10 +32,10 @@
             android:layout_weight="0.92"
             android:fontFamily="casual"
             android:paddingLeft="30dp"
-            android:text="Liste des utilisateurs"
+            android:text="Liste utilisateurs"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="@android:color/background_light"
-            android:textSize="24sp" />
+            android:textSize="30sp" />
 
     </LinearLayout>
 
@@ -44,6 +44,12 @@
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/logo_users"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/listuser128" />
 
         <LinearLayout
             android:layout_width="match_parent"
