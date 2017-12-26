@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.Space;
 import android.widget.TextView;
 
 import com.gi3.avisaux.R;
@@ -47,8 +48,8 @@ public class AvisArrayAdapter extends ArrayAdapter<Avis> {
         date.setText(avis.get(position).getDate());
 
         ImageButton btnDoc = (ImageButton) rowView.findViewById(R.id.doc);
+        btnDoc.setImageResource(R.drawable.doc48);
 
-        btnDoc.setImageResource(android.R.drawable.arrow_up_float);
         return rowView;
     }
 }

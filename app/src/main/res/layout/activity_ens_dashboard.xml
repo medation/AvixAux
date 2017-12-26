@@ -32,7 +32,7 @@
             android:layout_weight="0.92"
             android:fontFamily="casual"
             android:paddingLeft="30dp"
-            android:text="Enseignent"
+            android:text="Enseignant"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="@android:color/background_light"
             android:textSize="36sp" />
@@ -41,11 +41,11 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="128dp"
+        android:layout_height="125dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/admin" />
+        app:srcCompat="@drawable/enseignant128" />
 
     <LinearLayout
         android:layout_width="match_parent"

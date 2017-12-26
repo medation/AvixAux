@@ -33,10 +33,10 @@
             android:layout_weight="0.92"
             android:fontFamily="casual"
             android:paddingLeft="30dp"
-            android:text="Ajouter un utilisateur"
+            android:text="Ajout utilisateur"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="@android:color/background_light"
-            android:textSize="24sp" />
+            android:textSize="36sp" />
 
     </LinearLayout>
 
@@ -51,6 +51,13 @@
         android:paddingRight="30dp"
         android:paddingTop="50dp">
 
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/adduser128" />
 
         <TextView
             android:id="@+id/error"
