@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.gi3.avisaux.R;
-import com.gi3.avisaux.activity.enseignant.ProfilUserActivity;
+import com.gi3.avisaux.activity.ProfilActivity;
 import com.gi3.avisaux.domain.Utilisateur;
 
 public class StuDashboardActivity extends AppCompatActivity {
@@ -25,7 +25,7 @@ public class StuDashboardActivity extends AppCompatActivity {
     }
 
     public void profilClick(View view) {
-        intent = new Intent(this, ProfilUserActivity.class);
+        intent = new Intent(this, ProfilActivity.class);
         intent.putExtras(getIntent());
         startActivity(intent);
     }

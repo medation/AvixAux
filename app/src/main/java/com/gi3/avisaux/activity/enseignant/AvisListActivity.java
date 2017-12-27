@@ -24,7 +24,7 @@ public class AvisListActivity extends ListActivity {
     }
 
     public void loadList() {
-        setListAdapter(new AvisArrayAdapter(this, enseignantService.getMyAvis()));
+        setListAdapter(new AvisArrayAdapter(this, enseignantService.getMyAvis(),true, false));
     }
 
     public void back(View view) {

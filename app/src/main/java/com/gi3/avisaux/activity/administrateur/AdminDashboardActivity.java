@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.gi3.avisaux.R;
+import com.gi3.avisaux.activity.ProfilActivity;
 
 public class AdminDashboardActivity extends AppCompatActivity {
 

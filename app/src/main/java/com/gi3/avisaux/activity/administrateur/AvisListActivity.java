@@ -23,7 +23,7 @@ public class AvisListActivity extends ListActivity {
     }
 
     public void loadList(){
-        setListAdapter(new AvisArrayAdapter(this,adminService.getAllAvis()));
+        setListAdapter(new AvisArrayAdapter(this,adminService.getAllAvis(),true,false));
     }
 
     public void back(View view) {

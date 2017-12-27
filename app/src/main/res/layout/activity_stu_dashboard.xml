@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/background_light"
             android:onClick="avisClick"
-            android:text="Lister les notifications" />
+            android:text="Lister les avis" />
 
         <Button
             android:id="@+id/profil"
