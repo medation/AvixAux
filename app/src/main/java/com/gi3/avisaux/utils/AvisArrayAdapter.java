@@ -57,6 +57,7 @@ public class AvisArrayAdapter extends ArrayAdapter<Avis> {
         if(isAdmin){
             ImageButton btnDelete = (ImageButton) rowView.findViewById(R.id.delete);
             btnDelete.setImageResource(android.R.drawable.ic_delete);
+            btnDelete.setClickable(true);
         }
 
         if (!isStudent){
