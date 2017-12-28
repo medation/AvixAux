@@ -12,6 +12,9 @@ import com.gi3.server.repo.GroupeRepo;
 import com.gi3.server.repo.NiveauRepo;
 import com.gi3.server.repo.users.EnseignantRepo;
 import com.gi3.server.service.EnseignantService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -21,7 +24,9 @@ import java.util.Set;
 /**
  * @author kadarH
  */
-
+@Service
+@Transactional
+@Slf4j
 public class EnseignantServiceImpl implements EnseignantService {
 
     private final AvisRepo avisRepo;

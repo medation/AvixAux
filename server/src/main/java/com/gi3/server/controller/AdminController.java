@@ -45,9 +45,9 @@ public class AdminController {
     /**
      * @param id : the id of the user to delete
      */
-    @DeleteMapping("/users/{id}/delete")
-    public void deleteUser(@PathVariable Long id) {
-        return;
+    @DeleteMapping("/{user}/{id}/delete")
+    public void deleteUser(@PathVariable Long id, @PathVariable String user) {
+        adminService.deleteUser(id, user);
     }
 
     /**
@@ -55,7 +55,7 @@ public class AdminController {
      */
     @GetMapping("/avis")
     public List<Avis> avisList() {
-        return null;
+        return adminService.listAvix();
     }
 
     /**
@@ -63,7 +63,7 @@ public class AdminController {
      */
     @DeleteMapping("/avis/{id}/delete")
     public void deleteAvis(@PathVariable Long id) {
-        return;
+        adminService.deleteAvix(id);
     }
 
 }

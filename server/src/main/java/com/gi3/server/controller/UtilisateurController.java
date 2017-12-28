@@ -1,10 +1,8 @@
 package com.gi3.server.controller;
 
 import com.gi3.server.domain.users.Utilisateur;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.gi3.server.service.UtilisateurService;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author kadarH
@@ -14,12 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UtilisateurController {
 
+    private UtilisateurService utilisateurService;
+
+    public UtilisateurController(UtilisateurService utilisateurService) {
+        this.utilisateurService = utilisateurService;
+    }
+
     /**
      * @param id of the user to update
      * @return
      */
     @PutMapping("/{id}/put")
-    public Utilisateur changeProfile(@PathVariable Long id) {
-        return null;
+    public Utilisateur changeProfile(@RequestBody Utilisateur utilisateur, @PathVariable Long id) {
+        return utilisateurService.updateProfile(utilisateur, id);
     }
 }

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -87,8 +88,10 @@ public class IndexController {
     }
 
     @GetMapping("/groupes")
-    public List<Groupe> groupeList() {
-        return groupeRepo.findAll();
+    public List<String> groupeList() {
+        List<String> list = new ArrayList<>();
+        groupeRepo.findAll().stream().forEach(groupe -> list.add(groupe.getNom()));
+        return list;
     }
 
 }

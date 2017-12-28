@@ -1,22 +1,28 @@
 package com.gi3.server.controller;
 
 import com.gi3.server.domain.Avis;
-import com.gi3.server.domain.Filiere;
-import com.gi3.server.domain.Groupe;
-import com.gi3.server.domain.Niveau;
 import com.gi3.server.dto.AvisDTO;
+import com.gi3.server.service.EnseignantService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author kadarH
  */
 
 @RestController
-@RequestMapping("/enseignant/{id}")
+@RequestMapping("/enseignant")
 public class EnseignantController {
 
+
+    private EnseignantService enseignantService;
+
+    public EnseignantController(EnseignantService enseignantService) {
+        this.enseignantService = enseignantService;
+    }
 
     /**
      * This methode will accept an object AvisDTO ,call the service to
@@ -26,7 +32,7 @@ public class EnseignantController {
      * @param id
      * @return Avis
      */
-    @PostMapping("/add")
+    @PostMapping("/{id}/add")
     public Avis addAvis(@RequestBody AvisDTO avisDTO, @PathVariable Long id) {
         return null;
     }
@@ -35,9 +41,9 @@ public class EnseignantController {
      * @return list de tout les avis
      */
 
-    @GetMapping("/avis")
-    public List<Avis> avisList() {
-        return null;
+    @GetMapping("/{id}/avis")
+    public Set<Avis> avisList(@PathVariable Long id) {
+        return enseignantService.listAvix(id);
     }
 
 
@@ -46,26 +52,32 @@ public class EnseignantController {
      * you will use it when the teacher want to fill the form of Avis.
      */
     @GetMapping("/filieres")
-    public List<Filiere> filieresList() {
-        return null;
+    public List<String> filieresList() {
+        List<String> list = new ArrayList<>();
+        enseignantService.listFiliere().stream().forEach(filiere -> list.add(filiere.getNom()));
+        return list;
     }
 
     /**
      * @param id_Filiere You will use it when the teacher want to fill the form of Avis.
      * @return list des Niveau where Filiere.id = id_Filiere
      */
-    @GetMapping("/filieres/{id_Filiere}")
-    public List<Niveau> niveauList(@PathVariable Long id_Filiere) {
-        return null;
+    @GetMapping("/filieres/{nom_filiere}")
+    public List<String> niveauList(@PathVariable String nom_filiere) {
+        List<String> list = new ArrayList<>();
+        enseignantService.listNiveau(nom_filiere).stream().forEach(niveau -> list.add(niveau.getNom()));
+        return list;
     }
 
     /**
      * @param id_Niveau You will use it when the teacher want to fill the form of Avis.
      * @return list des Groupe where Niveau.id = id_Niveau
      */
-    @GetMapping("/niveaux/{id_Niveau}")
-    public List<Groupe> groupeList(@PathVariable Long id_Niveau) {
-        return null;
+    @GetMapping("/niveaux/{nom_niveau}")
+    public List<String> groupeList(@PathVariable String nom_niveau) {
+        List<String> list = new ArrayList<>();
+        enseignantService.listGroupe(nom_niveau).stream().forEach(groupe -> list.add(groupe.getNom()));
+        return list;
     }
 
     /**
