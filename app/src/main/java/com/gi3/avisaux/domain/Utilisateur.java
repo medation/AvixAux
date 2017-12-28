@@ -14,17 +14,29 @@ public class Utilisateur implements Serializable{
     private String userName;
     private String password;
     private String role;
+    private String groupe;
 
     public Utilisateur() {
     }
 
-    public Utilisateur(int id, String prenom, String nom, String userName, String password, String role) {
+    public Utilisateur(int id, String prenom, String nom, String userName, String password, String role, String groupe) {
         this.id = id;
         this.prenom = prenom;
         this.nom = nom;
         this.userName = userName;
         this.password = password;
         this.role = role;
+        this.groupe = groupe;
+    }
+
+    public Utilisateur(String prenom, String nom, String userName, String password, String role, String groupe) {
+
+        this.prenom = prenom;
+        this.nom = nom;
+        this.userName = userName;
+        this.password = password;
+        this.role = role;
+        this.groupe = groupe;
     }
 
     public int getId() {
@@ -73,5 +85,13 @@ public class Utilisateur implements Serializable{
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getGroupe() {
+        return groupe;
+    }
+
+    public void setGroupe(String groupe) {
+        this.groupe = groupe;
     }
 }

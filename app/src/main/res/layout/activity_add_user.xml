@@ -67,7 +67,7 @@
             android:textColor="@android:color/holo_red_dark" />
 
         <EditText
-            android:id="@+id/userName"
+            android:id="@+id/user_name"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_gravity="center"
@@ -121,7 +121,14 @@
         <Spinner
             android:id="@+id/role"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:entries="@array/role_arrays"/>
+
+        <Spinner
+            android:id="@+id/groupe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
 
         <Button
             android:id="@+id/addUser"
@@ -129,7 +136,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@android:color/background_light"
-            android:onClick="onClick"
+            android:onClick="addUserClick"
             android:text="Ajouter" />
 
 
