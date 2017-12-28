@@ -12,24 +12,23 @@
     tools:layout_editor_absoluteX="8dp"
     tools:layout_editor_absoluteY="8dp">
 
-        <LinearLayout
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:orientation="horizontal"
             android:weightSum="1">
 
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="right|bottom"
-                android:layout_weight="0.13"
-                android:background="@android:color/background_light"
-                android:backgroundTint="@color/colorPrimary"
-                android:tint="@android:color/background_light"
-                app:srcCompat="@android:drawable/ic_dialog_info" />
-
-        </LinearLayout>
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|bottom"
+            android:layout_weight="1"
+            android:background="@android:color/background_light"
+            android:backgroundTint="@color/colorPrimary"
+            android:tint="@android:color/background_light"
+            app:srcCompat="@android:drawable/ic_dialog_info" />
+    </LinearLayout>
 
         <TextView
             android:id="@+id/textAccueil"

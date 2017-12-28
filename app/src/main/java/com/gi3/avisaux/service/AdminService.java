@@ -3,6 +3,9 @@ package com.gi3.avisaux.service;
 import com.gi3.avisaux.domain.Avis;
 import com.gi3.avisaux.domain.Utilisateur;
 
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.web.client.RestTemplate;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,11 +15,33 @@ import java.util.List;
 
 public class AdminService {
 
+    private static String base_url = "https://localhost:8080/";
+
+    public void addUser(Utilisateur user){
+
+    }
+
+    public List<String> getGroupe(){
+        // The connection URL
+        String url = AdminService.base_url + "/groupes";
+
+        // Create a new RestTemplate instance
+                RestTemplate restTemplate = new RestTemplate();
+
+        // Add the String message converter
+                restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+
+        // Make the HTTP GET request, marshaling the response to a String
+                List<String> result = restTemplate.getForObject(url, List.class, "Android");
+
+        return result;
+    }
+
     public List<Utilisateur> getUsers(){
         List<Utilisateur> users = new ArrayList<>();
-        Utilisateur user1 = new Utilisateur(1,"Salah","Loukili","userSalah","pass","user");
+        Utilisateur user1 = new Utilisateur(1,"Salah","Loukili","userSalah","pass","user",null);
         users.add(user1);
-        Utilisateur user2 = new Utilisateur(1,"Hamza","Kadar","userH","pass","user");
+        Utilisateur user2 = new Utilisateur(1,"Hamza","Kadar","userH","pass","user",null);
         users.add(user2);
         return users;
     }

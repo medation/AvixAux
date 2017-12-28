@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">AvisAux</string>
-    <string name="action_settings">Settings</string>
+    <string-array name="role_arrays">
+        <item>admin</item>
+        <item>etudiant</item>
+        <item>enseignant</item>
+    </string-array>
 </resources>
