@@ -1,9 +1,10 @@
 package com.gi3.avisaux.service;
 
+import android.os.AsyncTask;
+import android.util.Log;
 import com.gi3.avisaux.domain.Avis;
 import com.gi3.avisaux.domain.Utilisateur;
-
-import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -15,26 +16,17 @@ import java.util.List;
 
 public class AdminService {
 
-    private static String base_url = "https://localhost:8080/";
-
+    private static String base_url = "http://192.168.49.1:8080";
+    private List<String> groupes = new ArrayList<>();
     public void addUser(Utilisateur user){
 
     }
 
+    public void inst() {
+        new HttpRequestTask().execute();
+    }
     public List<String> getGroupe(){
-        // The connection URL
-        String url = AdminService.base_url + "/groupes";
-
-        // Create a new RestTemplate instance
-                RestTemplate restTemplate = new RestTemplate();
-
-        // Add the String message converter
-                restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-
-        // Make the HTTP GET request, marshaling the response to a String
-                List<String> result = restTemplate.getForObject(url, List.class, "Android");
-
-        return result;
+        return groupes;
     }
 
     public List<Utilisateur> getUsers(){
@@ -55,4 +47,25 @@ public class AdminService {
         return avis;
     }
 
+    class HttpRequestTask extends AsyncTask<Void, Void, List<String>> {
+
+        @Override
+        protected List<String> doInBackground(Void... params) {
+            try {
+                final String url = AdminService.base_url + "/groupes";
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+                groupes = restTemplate.getForObject(url, List.class);
+                return groupes;
+            } catch (Exception e) {
+                Log.e("MainActivity", e.getMessage(), e);
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(List<String> list) {
+            super.onPostExecute(list);
+        }
+    }
 }

@@ -7,11 +7,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 import com.gi3.avisaux.R;
 import com.gi3.avisaux.domain.Utilisateur;
 import com.gi3.avisaux.service.AdminService;
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class AddUserActivity extends AppCompatActivity {
@@ -32,9 +31,10 @@ public class AddUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
-
         loadRole();
-        loadGroupe();
+        adminService.inst();
+        groupeSpinner = (Spinner) findViewById(R.id.groupe);
+
         /*
         role = roleSprinner.getSelectedItem().toString();
         if(role.equals("etudiant")){
@@ -47,6 +47,7 @@ public class AddUserActivity extends AppCompatActivity {
                 role = (String) parent.getItemAtPosition(position);
                 if(role.equals("etudiant")){
                     groupeSpinner.setEnabled(true);
+                    loadGroupe();
                 }
                 else  groupeSpinner.setEnabled(false);
             }
@@ -56,24 +57,20 @@ public class AddUserActivity extends AppCompatActivity {
 
             }
         });
-
-
-
     }
+
 
     public void loadRole(){
         roleSprinner = ((Spinner) findViewById(R.id.role));
     }
 
     public void loadGroupe(){
-        groupeSpinner = (Spinner) findViewById(R.id.groupe);
         List<String> groupes;
         groupes = adminService.getGroupe();
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, groupes);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         groupeSpinner.setAdapter(dataAdapter);
-        groupeSpinner.setEnabled(false);
     }
 
     public void addUserClick(View view){
@@ -85,9 +82,6 @@ public class AddUserActivity extends AppCompatActivity {
         Utilisateur user = new Utilisateur(name,lastName,userName,password,role,null);
 
     }
-
-
-
 
     public void back(View view) {
         finish();
