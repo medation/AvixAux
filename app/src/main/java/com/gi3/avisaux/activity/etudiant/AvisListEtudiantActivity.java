@@ -26,7 +26,7 @@ public class AvisListEtudiantActivity extends ListActivity {
     }
 
     public void loadList() {
-        setListAdapter(new AvisArrayAdapter(this, etudiantService.getAvisEtudiant(etudiant.getId())));
+        setListAdapter(new AvisArrayAdapter(this, etudiantService.getAvisEtudiant(etudiant.getId()),false,true));
     }
 
     public void back(View view) {

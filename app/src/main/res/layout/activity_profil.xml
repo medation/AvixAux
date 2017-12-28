@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +8,6 @@
     android:background="@color/colorPrimary"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="com.gi3.avisaux.activity.administrateur.ProfilActivity"
     tools:layout_editor_absoluteX="8dp"
     tools:layout_editor_absoluteY="8dp">
 
@@ -43,7 +41,9 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
@@ -64,17 +64,6 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/holo_red_dark" />
 
-        <EditText
-            android:id="@+id/user_name"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@android:color/background_light"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textColor="@android:color/background_light"
-            android:textColorHint="@android:color/background_light"
-            android:textColorLink="@android:color/background_light" />
 
         <EditText
             android:id="@+id/password"
@@ -83,6 +72,20 @@
             android:layout_gravity="center"
             android:backgroundTint="@android:color/background_light"
             android:ems="10"
+            android:hint="Nouveau mot de pass"
+            android:inputType="textPassword"
+            android:textColor="@android:color/background_light"
+            android:textColorHint="@android:color/background_light"
+            android:textColorLink="@android:color/background_light" />
+
+        <EditText
+            android:id="@+id/confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@android:color/background_light"
+            android:ems="10"
+            android:hint="Confirmer mot de passe"
             android:inputType="textPassword"
             android:textColor="@android:color/background_light"
             android:textColorHint="@android:color/background_light"
@@ -112,19 +115,14 @@
             android:textColorHint="@android:color/background_light"
             android:textColorLink="@android:color/background_light" />
 
-        <Spinner
-            android:id="@+id/role"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
         <Button
-            android:id="@+id/addUser"
+            android:id="@+id/valider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@android:color/background_light"
             android:onClick="onClick"
-            android:text="Ajouter" />
+            android:text="Valider" />
 
 
     </LinearLayout>

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.gi3.avisaux.R;
+import com.gi3.avisaux.activity.ProfilActivity;
 
 public class EnsDashboardActivity extends AppCompatActivity {
 
@@ -16,6 +17,7 @@ public class EnsDashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ens_dashboard);
     }
+
 
     public void listerAvisClick(View view) {
         intent = new Intent(this, AvisListActivity.class);
@@ -30,7 +32,7 @@ public class EnsDashboardActivity extends AppCompatActivity {
     }
 
     public void profilClick(View view) {
-        intent = new Intent(this, ProfilUserActivity.class);
+        intent = new Intent(this, ProfilActivity.class);
         intent.putExtras(getIntent());
         startActivity(intent);
     }

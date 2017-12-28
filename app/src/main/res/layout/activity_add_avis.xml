@@ -17,7 +17,7 @@
         android:orientation="horizontal">
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/backl"
+            android:id="@+id/back"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -71,6 +71,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <Spinner
+            android:id="@+id/niveau"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:id="@+id/groupe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <EditText
             android:id="@+id/message"
             android:layout_width="match_parent"
@@ -82,6 +92,30 @@
             android:textColor="@android:color/background_light"
             android:textColorHint="@android:color/background_light"
             android:textColorLink="@android:color/background_light" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/path"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="casual"
+                android:text="path"
+                android:textColor="@android:color/background_light"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/parcourir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Parcourir" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/add_avis"
