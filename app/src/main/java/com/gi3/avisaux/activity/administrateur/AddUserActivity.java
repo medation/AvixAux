@@ -1,6 +1,7 @@
 package com.gi3.avisaux.activity.administrateur;
 
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,6 +12,7 @@ import com.gi3.avisaux.R;
 import com.gi3.avisaux.domain.Utilisateur;
 import com.gi3.avisaux.service.AdminService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddUserActivity extends AppCompatActivity {
@@ -31,15 +33,16 @@ public class AddUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         loadRole();
-        adminService.inst();
-        groupeSpinner = (Spinner) findViewById(R.id.groupe);
+        loadGroupe();
+    }
 
-        /*
-        role = roleSprinner.getSelectedItem().toString();
-        if(role.equals("etudiant")){
-            groupeSpinner.setEnabled(true);
-        }*/
+    @Override
+    protected void onStart() {
+
+        super.onStart();
 
         roleSprinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -47,7 +50,6 @@ public class AddUserActivity extends AppCompatActivity {
                 role = (String) parent.getItemAtPosition(position);
                 if(role.equals("etudiant")){
                     groupeSpinner.setEnabled(true);
-                    loadGroupe();
                 }
                 else  groupeSpinner.setEnabled(false);
             }
@@ -57,14 +59,15 @@ public class AddUserActivity extends AppCompatActivity {
 
             }
         });
-    }
 
+    }
 
     public void loadRole(){
         roleSprinner = ((Spinner) findViewById(R.id.role));
     }
 
     public void loadGroupe(){
+        groupeSpinner = (Spinner) findViewById(R.id.groupe);
         List<String> groupes;
         groupes = adminService.getGroupe();
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
@@ -74,12 +77,14 @@ public class AddUserActivity extends AppCompatActivity {
     }
 
     public void addUserClick(View view){
+
         userName = ((EditText) findViewById(R.id.user_name)).getText().toString();
         password = ((EditText) findViewById(R.id.password)).getText().toString();
         name = ((EditText) findViewById(R.id.name)).getText().toString();
         lastName = ((EditText) findViewById(R.id.last_name)).getText().toString();
-
-        Utilisateur user = new Utilisateur(name,lastName,userName,password,role,null);
+        groupe = groupeSpinner.getSelectedItem().toString();
+        Utilisateur user = new Utilisateur(200,name,lastName,userName,password,role,groupe);
+        adminService.addUser(user);
 
     }
 

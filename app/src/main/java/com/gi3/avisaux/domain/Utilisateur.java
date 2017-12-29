@@ -39,6 +39,16 @@ public class Utilisateur implements Serializable{
         this.groupe = groupe;
     }
 
+    public Utilisateur(int id, String prenom, String nom, String userName, String password, String role) {
+
+        this.id = id;
+        this.prenom = prenom;
+        this.nom = nom;
+        this.userName = userName;
+        this.password = password;
+        this.role = role;
+    }
+
     public int getId() {
         return id;
     }

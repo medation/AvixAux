@@ -2,6 +2,7 @@ package com.gi3.avisaux.activity.administrateur;
 
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -19,6 +20,8 @@ public class UserListActivity extends ListActivity {
         setContentView(R.layout.activity_user_list);
         ImageView logo = findViewById(R.id.logo_users);
         logo.setImageResource(R.drawable.listuser128);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         loadList();
     }
 

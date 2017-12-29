@@ -4,10 +4,16 @@ import android.os.AsyncTask;
 import android.util.Log;
 import com.gi3.avisaux.domain.Avis;
 import com.gi3.avisaux.domain.Utilisateur;
+
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -16,26 +22,40 @@ import java.util.List;
 
 public class AdminService {
 
-    private static String base_url = "http://192.168.49.1:8080";
-    private List<String> groupes = new ArrayList<>();
+    private static String base_url = "http://192.168.1.5:8080";
+
+    private RestTemplate restTemplate = new RestTemplate();
+
     public void addUser(Utilisateur user){
 
-    }
+        RestTemplate restTemplate = new RestTemplate();
 
-    public void inst() {
-        new HttpRequestTask().execute();
+        HttpEntity<Utilisateur> request = new HttpEntity<>(user);
+        String url = base_url + "/admin/add";
+
+        restTemplate.postForObject(url, request,Utilisateur.class);
+
     }
     public List<String> getGroupe(){
-        return groupes;
+
+        String url = base_url + "/groupes";
+        return restTemplate.exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<List<String>>() {
+        }).getBody();
+
+        ///return Arrays.asList("G1","G2");
     }
 
     public List<Utilisateur> getUsers(){
-        List<Utilisateur> users = new ArrayList<>();
+
+        /*List<Utilisateur> users = new ArrayList<>();
         Utilisateur user1 = new Utilisateur(1,"Salah","Loukili","userSalah","pass","user",null);
         users.add(user1);
         Utilisateur user2 = new Utilisateur(1,"Hamza","Kadar","userH","pass","user",null);
         users.add(user2);
-        return users;
+        return users;*/
+
+        String url = base_url + "/admin/users";
+        return restTemplate.exchange(url, HttpMethod.GET,null, new ParameterizedTypeReference<List<Utilisateur>>() {}).getBody();
     }
 
     public List<Avis> getAllAvis(){
@@ -45,27 +65,5 @@ public class AdminService {
         avis.add(avis1);
         avis.add(avis2);
         return avis;
-    }
-
-    class HttpRequestTask extends AsyncTask<Void, Void, List<String>> {
-
-        @Override
-        protected List<String> doInBackground(Void... params) {
-            try {
-                final String url = AdminService.base_url + "/groupes";
-                RestTemplate restTemplate = new RestTemplate();
-                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-                groupes = restTemplate.getForObject(url, List.class);
-                return groupes;
-            } catch (Exception e) {
-                Log.e("MainActivity", e.getMessage(), e);
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(List<String> list) {
-            super.onPostExecute(list);
-        }
     }
 }

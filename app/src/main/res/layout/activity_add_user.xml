@@ -69,7 +69,7 @@
         <EditText
             android:id="@+id/user_name"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="@android:color/background_light"
             android:ems="10"
@@ -82,7 +82,7 @@
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="@android:color/background_light"
             android:ems="10"
@@ -95,7 +95,7 @@
         <EditText
             android:id="@+id/last_name"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="@android:color/background_light"
             android:ems="10"
@@ -108,7 +108,7 @@
         <EditText
             android:id="@+id/name"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="@android:color/background_light"
             android:ems="10"
@@ -121,14 +121,16 @@
         <Spinner
             android:id="@+id/role"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/role_arrays"/>
+            android:layout_height="50dp"
+            android:backgroundTint="@android:color/background_light"
+            android:entries="@array/role_arrays" />
 
         <Spinner
             android:id="@+id/groupe"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="50dp"
+            android:backgroundTint="@android:color/background_light"
+            android:textColor="@android:color/background_light" />
 
         <Button
             android:id="@+id/addUser"
