@@ -1,6 +1,7 @@
 package com.gi3.server.controller;
 
 import com.gi3.server.domain.users.Utilisateur;
+import com.gi3.server.dto.LoginDTO;
 import com.gi3.server.service.UtilisateurService;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("")
 public class UtilisateurController {
 
     private UtilisateurService utilisateurService;
@@ -22,8 +23,13 @@ public class UtilisateurController {
      * @param id of the user to update
      * @return
      */
-    @PutMapping("/{id}/put")
+    @PutMapping("/user/{id}/put")
     public Utilisateur changeProfile(@RequestBody Utilisateur utilisateur, @PathVariable Long id) {
         return utilisateurService.updateProfile(utilisateur, id);
+    }
+
+    @PostMapping("/login")
+    public Utilisateur login(@RequestBody LoginDTO loginDTO) {
+        return utilisateurService.login(loginDTO.getUsername(), loginDTO.getPassword());
     }
 }

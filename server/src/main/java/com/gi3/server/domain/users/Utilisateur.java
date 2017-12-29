@@ -2,6 +2,7 @@ package com.gi3.server.domain.users;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -19,6 +20,8 @@ public class Utilisateur {
     private Long id;
     private String prenom;
     private String nom;
+
+    @Column(unique = true)
     private String userName;
     private String password;
     private String role;

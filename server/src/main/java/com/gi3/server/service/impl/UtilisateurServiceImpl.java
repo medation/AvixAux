@@ -12,6 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.stream.Collectors;
+
 /**
  * @author kadarH
  */
@@ -70,5 +72,27 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    @Override
+    public Utilisateur login(String username, String password) {
+        Utilisateur admin, enseignant, etudiant;
+        admin = adminRepo.findAll().stream().filter(admine -> admine.getUserName().equals(username) && admine.getPassword().equals(password)).collect(Collectors.toList()).get(0);
+
+        if (admin != null) {
+            return admin;
+        }
+
+        enseignant = enseignantRepo.findAll().stream().filter(admine -> admine.getUserName().equals(username) && admine.getPassword().equals(password)).collect(Collectors.toList()).get(0);
+
+        if (enseignant != null) {
+            return enseignant;
+        }
+        etudiant = etudiantRepo.findAll().stream().filter(admine -> admine.getUserName().equals(username) && admine.getPassword().equals(password)).collect(Collectors.toList()).get(0);
+
+        if (etudiant != null) {
+            return etudiant;
+        }
+        return null;
     }
 }

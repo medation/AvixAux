@@ -6,4 +6,5 @@ public interface UtilisateurService {
 
     Utilisateur updateProfile(Utilisateur utilisateur, Long id);
 
+    Utilisateur login(String username, String password);
 }

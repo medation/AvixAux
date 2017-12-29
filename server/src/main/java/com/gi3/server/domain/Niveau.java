@@ -21,6 +21,8 @@ public class Niveau {
     @Id
     @GeneratedValue
     private Long id;
+
+    @Column(unique = true)
     private String nom;
 
     @JsonIgnore
