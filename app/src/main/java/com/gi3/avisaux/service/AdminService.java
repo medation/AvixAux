@@ -8,6 +8,7 @@ import com.gi3.avisaux.domain.Utilisateur;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -22,40 +23,30 @@ import java.util.List;
 
 public class AdminService {
 
-    private static String base_url = "http://192.168.1.5:8080";
-
+    private static String base_url = "http://192.168.12.198:8080";
     private RestTemplate restTemplate = new RestTemplate();
 
-    public void addUser(Utilisateur user){
-
-        RestTemplate restTemplate = new RestTemplate();
-
-        HttpEntity<Utilisateur> request = new HttpEntity<>(user);
+    public int addUser(Utilisateur user){
         String url = base_url + "/admin/add";
-
-        restTemplate.postForObject(url, request,Utilisateur.class);
-
+        HttpEntity<Utilisateur> request = new HttpEntity<>(user);
+        ResponseEntity<Utilisateur> responseEntity = restTemplate.exchange(url, HttpMethod.POST, request, Utilisateur.class);
+        int status = responseEntity.getStatusCode().value();
+        return status;
     }
     public List<String> getGroupe(){
-
         String url = base_url + "/groupes";
         return restTemplate.exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<List<String>>() {
         }).getBody();
-
-        ///return Arrays.asList("G1","G2");
     }
 
     public List<Utilisateur> getUsers(){
-
-        /*List<Utilisateur> users = new ArrayList<>();
-        Utilisateur user1 = new Utilisateur(1,"Salah","Loukili","userSalah","pass","user",null);
-        users.add(user1);
-        Utilisateur user2 = new Utilisateur(1,"Hamza","Kadar","userH","pass","user",null);
-        users.add(user2);
-        return users;*/
-
         String url = base_url + "/admin/users";
         return restTemplate.exchange(url, HttpMethod.GET,null, new ParameterizedTypeReference<List<Utilisateur>>() {}).getBody();
+    }
+
+    public void deleteUser(String role, int id){
+        String url = base_url + "/admin/" + role + "/" + id + "/delete";
+        restTemplate.delete(url);
     }
 
     public List<Avis> getAllAvis(){
@@ -66,4 +57,5 @@ public class AdminService {
         avis.add(avis2);
         return avis;
     }
+
 }

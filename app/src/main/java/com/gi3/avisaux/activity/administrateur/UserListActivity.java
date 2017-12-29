@@ -20,17 +20,22 @@ public class UserListActivity extends ListActivity {
         setContentView(R.layout.activity_user_list);
         ImageView logo = findViewById(R.id.logo_users);
         logo.setImageResource(R.drawable.listuser128);
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+
         loadList();
     }
 
     public void loadList(){
-        setListAdapter(new UserArrayAdapter(this, adminService.getUsers()));
+        setListAdapter(new UserArrayAdapter(this, adminService.getUsers(), getIntent()));
     }
+
+
 
     public void back(View view) {
         finish();
     }
+
 
 }

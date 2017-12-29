@@ -29,16 +29,6 @@ public class Utilisateur implements Serializable{
         this.groupe = groupe;
     }
 
-    public Utilisateur(String prenom, String nom, String userName, String password, String role, String groupe) {
-
-        this.prenom = prenom;
-        this.nom = nom;
-        this.userName = userName;
-        this.password = password;
-        this.role = role;
-        this.groupe = groupe;
-    }
-
     public Utilisateur(int id, String prenom, String nom, String userName, String password, String role) {
 
         this.id = id;

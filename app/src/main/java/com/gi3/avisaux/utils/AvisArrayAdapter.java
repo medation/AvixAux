@@ -37,7 +37,6 @@ public class AvisArrayAdapter extends ArrayAdapter<Avis> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -59,9 +58,7 @@ public class AvisArrayAdapter extends ArrayAdapter<Avis> {
             btnDelete.setImageResource(android.R.drawable.ic_delete);
             btnDelete.setClickable(true);
         }
-
         if (!isStudent){
-
             TextView groupe = rowView.findViewById(R.id.groupe);
             TextView niveau = rowView.findViewById(R.id.niveau);
             TextView filiere = rowView.findViewById(R.id.filiere);
@@ -69,9 +66,7 @@ public class AvisArrayAdapter extends ArrayAdapter<Avis> {
             groupe.setText(avis.get(position).getGroupe());
             niveau.setText(avis.get(position).getNiveau());
             filiere.setText(avis.get(position).getFiliere());
-
         }
-
         return rowView;
     }
 }

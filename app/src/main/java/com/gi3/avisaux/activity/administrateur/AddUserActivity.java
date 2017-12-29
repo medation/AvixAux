@@ -8,6 +8,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+
 import com.gi3.avisaux.R;
 import com.gi3.avisaux.domain.Utilisateur;
 import com.gi3.avisaux.service.AdminService;
@@ -28,20 +30,22 @@ public class AddUserActivity extends AppCompatActivity {
     private Spinner roleSprinner;
     private Spinner groupeSpinner;
     private Utilisateur user;
+    private TextView error;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+
         loadRole();
         loadGroupe();
     }
 
     @Override
     protected void onStart() {
-
         super.onStart();
 
         roleSprinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -53,7 +57,6 @@ public class AddUserActivity extends AppCompatActivity {
                 }
                 else  groupeSpinner.setEnabled(false);
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -77,15 +80,18 @@ public class AddUserActivity extends AppCompatActivity {
     }
 
     public void addUserClick(View view){
-
         userName = ((EditText) findViewById(R.id.user_name)).getText().toString();
         password = ((EditText) findViewById(R.id.password)).getText().toString();
         name = ((EditText) findViewById(R.id.name)).getText().toString();
         lastName = ((EditText) findViewById(R.id.last_name)).getText().toString();
         groupe = groupeSpinner.getSelectedItem().toString();
         Utilisateur user = new Utilisateur(200,name,lastName,userName,password,role,groupe);
-        adminService.addUser(user);
 
+        error = (TextView) findViewById(R.id.error);
+        if(adminService.addUser(user) == 500){
+            error.setText("Erreur lors de l'ajout");
+        }
+        else error.setText("Utilisateur ajouté");
     }
 
     public void back(View view) {
