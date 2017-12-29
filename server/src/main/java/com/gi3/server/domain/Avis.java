@@ -28,7 +28,7 @@ public class Avis {
     @ManyToOne
     private Enseignant enseignant;
 
-    @OneToMany(mappedBy = "avisSet")
+    @ManyToMany(mappedBy = "avisSet")
     private Set<Etudiant> etudiantSet;
     private byte[] doc;
     private LocalDateTime date;

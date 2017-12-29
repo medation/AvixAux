@@ -25,6 +25,7 @@ public class Etudiant extends Utilisateur {
     @ManyToOne
     private Groupe groupe;
 
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "etudiant_avis", joinColumns = @JoinColumn(name = "utilisateur_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "avis_id", referencedColumnName = "id"))
     private Set<Avis> avisSet = new HashSet<>();
