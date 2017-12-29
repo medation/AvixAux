@@ -18,7 +18,6 @@ public class EnsDashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ens_dashboard);
     }
 
-
     public void listerAvisClick(View view) {
         intent = new Intent(this, AvisListActivity.class);
         intent.putExtras(getIntent());

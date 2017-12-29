@@ -19,11 +19,9 @@ public class AddAvisActivity extends AppCompatActivity {
     private String filiere;
     private String niveau;
     private String groupe;
-
     private Spinner filiereSpinner;
     private Spinner niveauSpinner;
     private Spinner groupeSpinner;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

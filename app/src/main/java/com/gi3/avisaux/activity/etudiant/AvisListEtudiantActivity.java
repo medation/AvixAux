@@ -2,6 +2,7 @@ package com.gi3.avisaux.activity.etudiant;
 
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -21,7 +22,12 @@ public class AvisListEtudiantActivity extends ListActivity {
         setContentView(R.layout.activity_avis_list_etudiant);
         ImageView notif = findViewById(R.id.notif);
         notif.setImageResource(R.drawable.avis64);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         etudiant = (Utilisateur) getIntent().getExtras().get("user");
+
         loadList();
     }
 

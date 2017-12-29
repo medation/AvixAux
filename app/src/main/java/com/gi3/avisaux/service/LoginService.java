@@ -2,29 +2,31 @@ package com.gi3.avisaux.service;
 
 import com.gi3.avisaux.domain.Utilisateur;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
 public class LoginService {
 
-    public Utilisateur login(String username, String password){
+    private static String base_url = "http://192.168.12.198:8080";
+    private RestTemplate restTemplate = new RestTemplate();
 
-        Utilisateur ens = new Utilisateur(1, "med", "Elhachimi", "a", "z", "enseignant",null);
-        Utilisateur admin = new Utilisateur(2, "mid", "Elhachimi", "", "", "admin",null);
-        Utilisateur etudiant = new Utilisateur(3, "ez", "azaza", "w", "x", "etudiant","G1");
-        List<Utilisateur> users = new ArrayList<>();
-        users.add(ens);
-        users.add(admin);
-        users.add(etudiant);
-
-
-        for (Utilisateur user : users) {
-            if (user.getUserName().equals(username) && user.getPassword().equals(password))
-                return user;
+    public Utilisateur login(final String usernameparam, final String passparam){
+        String url = base_url + "/login";
+        class Login{
+            String username = usernameparam;
+            String password = passparam;
         }
-
-        return null;
+        HttpEntity<Login> request = new HttpEntity<>(new Login());
+        ResponseEntity<Utilisateur> responseUser = restTemplate.exchange(url, HttpMethod.POST, request, Utilisateur.class);
+        Utilisateur currentUser = responseUser.getBody();
+        return currentUser;
     }
 
 }
