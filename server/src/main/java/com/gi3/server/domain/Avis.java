@@ -1,6 +1,7 @@
 package com.gi3.server.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gi3.server.domain.users.Enseignant;
 import com.gi3.server.domain.users.Etudiant;
 import lombok.Data;
@@ -9,6 +10,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -28,9 +30,22 @@ public class Avis {
     @ManyToOne
     private Enseignant enseignant;
 
-    @ManyToMany(mappedBy = "avisSet")
-    private Set<Etudiant> etudiantSet;
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "etudiant_avis", joinColumns = @JoinColumn(name = "etudiant_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "avis_id", referencedColumnName = "id"))
+    private Set<Etudiant> etudiantSet = new HashSet<>();
+
+    @Lob
     private byte[] doc;
+
     private LocalDateTime date;
+
+    public void addToSet(Etudiant etudiant) {
+        etudiantSet.add(etudiant);
+    }
+
+    public void removeFromSet(Etudiant etudiant) {
+        etudiantSet.remove(etudiant);
+    }
 
 }

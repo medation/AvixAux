@@ -3,8 +3,12 @@ package com.gi3.server.controller;
 import com.gi3.server.domain.Avis;
 import com.gi3.server.dto.AvisDTO;
 import com.gi3.server.service.EnseignantService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -28,13 +32,19 @@ public class EnseignantController {
      * This methode will accept an object AvisDTO ,call the service to
      * convert the object to Avis.
      *
-     * @param avisDTO
+     *
      * @param id
      * @return Avis
      */
     @PostMapping("/{id}/add")
-    public Avis addAvis(@RequestBody AvisDTO avisDTO, @PathVariable Long id) {
-        return null;
+    @ResponseBody
+    public ResponseEntity<String> addAvis(@RequestPart MultipartFile doc, @RequestPart String message, @RequestPart String groupe, @PathVariable Long id) throws IOException {
+        AvisDTO avisDTO = new AvisDTO();
+        avisDTO.setMessage(message);
+        avisDTO.setDoc(doc.getBytes());
+        avisDTO.setGroupe(groupe);
+        enseignantService.add(avisDTO, id);
+        return new ResponseEntity<>("200", HttpStatus.OK);
     }
 
     /**
@@ -59,7 +69,7 @@ public class EnseignantController {
     }
 
     /**
-     * @param id_Filiere You will use it when the teacher want to fill the form of Avis.
+     * @param nom_filiere You will use it when the teacher want to fill the form of Avis.
      * @return list des Niveau where Filiere.id = id_Filiere
      */
     @GetMapping("/filieres/{nom_filiere}")
@@ -70,7 +80,7 @@ public class EnseignantController {
     }
 
     /**
-     * @param id_Niveau You will use it when the teacher want to fill the form of Avis.
+     * @param nom_niveau You will use it when the teacher want to fill the form of Avis.
      * @return list des Groupe where Niveau.id = id_Niveau
      */
     @GetMapping("/niveaux/{nom_niveau}")

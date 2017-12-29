@@ -59,15 +59,16 @@ public class EnseignantServiceImpl implements EnseignantService {
         avis.setDate(LocalDateTime.now());
         avis.setDoc(avisDTO.getDoc());
         avis.setMessage(avisDTO.getMessage());
-        if (nom_groupe != "" && nom_groupe != null) {
-            avis.setEtudiantSet(groupeRepo.findByNom(nom_groupe).getEtudiantSet());
+        if (!nom_groupe.equals("") && nom_groupe != null) {
+            groupeRepo.findByNom(nom_groupe).getEtudiantSet().stream().forEach(etudiant -> avis.addToSet(etudiant));
         } else if (nom_niveau != "" && nom_niveau != null) {
             Set<Etudiant> etudiantSet = new HashSet<>();
             niveauRepo.findByNom(nom_niveau).getGroupeSet().stream().forEach(groupe -> groupe.getEtudiantSet().stream().forEach(etudiant -> etudiantSet.add(etudiant)));
-            avis.setEtudiantSet(etudiantSet);
+            etudiantSet.stream().forEach(etudiant -> avis.addToSet(etudiant));
         } else if (nom_filiere != "" && nom_filiere != null) {
             Set<Etudiant> etudiantSet = new HashSet<>();
             filiereRepo.findByNom(nom_filiere).getNiveauSet().stream().forEach(niveau -> niveau.getGroupeSet().stream().forEach(groupe -> groupe.getEtudiantSet().stream().forEach(etudiant -> etudiantSet.add(etudiant))));
+            etudiantSet.stream().forEach(etudiant -> avis.addToSet(etudiant));
         } else {
             return null;
         }

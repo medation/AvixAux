@@ -26,6 +26,7 @@ public class EtudiantServiceImpl implements EtudiantService {
 
     @Override
     public Set<Avis> listAvix(Long id_etudiant) {
-        return etudiantRepo.findOne(id_etudiant).getAvisSet();
+        //return etudiantRepo.findOne(id_etudiant).getAvisSet();
+        return null;
     }
 }
