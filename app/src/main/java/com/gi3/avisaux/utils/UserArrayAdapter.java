@@ -4,7 +4,10 @@ package com.gi3.avisaux.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gi3.avisaux.R;
 import com.gi3.avisaux.domain.Utilisateur;
@@ -34,6 +38,7 @@ public class UserArrayAdapter extends ArrayAdapter<Utilisateur> {
     private TextView lastName;
     private TextView role;
     private ImageButton btnDelete;
+    private boolean delete =false;
 
     public UserArrayAdapter(Context context, List<Utilisateur> users, Intent intent) {
         super(context, R.layout.list_users, users);
@@ -63,11 +68,36 @@ public class UserArrayAdapter extends ArrayAdapter<Utilisateur> {
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
                                             public void onClick(View v) {
-                                                adminService.deleteUser(users.get(position).getRole(),users.get(position).getId());
-                                                context.startActivity(intent);
-                                                ((Activity)context).finish();
+                                                alert(users.get(position));
                                             }
                                         });
         return rowView;
+    }
+
+    public void alert(final Utilisateur user){
+        AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(context, android.R.style.Theme_Material_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(context);
+        }
+        builder.setTitle("Suppression d'utilisateur")
+                .setMessage("Êtes-vous sûr de vouloir supprimer : "+user.getUserName()+" ? ")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        adminService.deleteUser(user.getRole(), user.getId());
+                        context.startActivity(intent);
+                        Toast toast = Toast.makeText(context, "L'utilisateur " + user.getUserName() + " est supprimé avec succes", Toast.LENGTH_SHORT);
+                        toast.show();
+                        ((Activity) context).finish();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 }

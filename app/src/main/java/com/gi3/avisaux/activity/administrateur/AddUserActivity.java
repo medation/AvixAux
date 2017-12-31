@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gi3.avisaux.R;
 import com.gi3.avisaux.domain.Utilisateur;
@@ -86,12 +87,16 @@ public class AddUserActivity extends AppCompatActivity {
         lastName = ((EditText) findViewById(R.id.last_name)).getText().toString();
         groupe = groupeSpinner.getSelectedItem().toString();
         Utilisateur user = new Utilisateur(200,name,lastName,userName,password,role,groupe);
-
+        int status = adminService.addUser(user);
         error = (TextView) findViewById(R.id.error);
-        if(adminService.addUser(user) == 500){
+        if(status == 500)
             error.setText("Erreur lors de l'ajout");
+        else if(status == 200){
+            Toast toast = Toast.makeText(getApplicationContext(),"Utilisateur ajouté avec succés",Toast.LENGTH_SHORT);
+            toast.show();
         }
-        else error.setText("Utilisateur ajouté");
+        else
+            error.setText("Erreur lors de l'ajout");
     }
 
     public void back(View view) {

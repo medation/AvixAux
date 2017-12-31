@@ -23,7 +23,7 @@ import java.util.List;
 
 public class AdminService {
 
-    private static String base_url = "http://192.168.12.198:8080";
+    private static String base_url = "http://192.168.1.15:8080";
     private RestTemplate restTemplate = new RestTemplate();
 
     public int addUser(Utilisateur user){

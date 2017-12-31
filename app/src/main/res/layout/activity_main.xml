@@ -26,6 +26,7 @@
             android:layout_weight="1"
             android:background="@android:color/background_light"
             android:backgroundTint="@color/colorPrimary"
+            android:onClick="sendNotification"
             android:tint="@android:color/background_light"
             app:srcCompat="@android:drawable/ic_dialog_info" />
     </LinearLayout>

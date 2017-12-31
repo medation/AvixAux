@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gi3.avisaux.R;
 import com.gi3.avisaux.domain.Utilisateur;
@@ -62,8 +63,10 @@ public class ProfilActivity extends AppCompatActivity {
             error.setText("Le mot de passe n'est pas confirmé correctement !");
         else if(utilisateurService.modifierProfil(user) == 500)
             error.setText("Erreur lors de la modification ! ");
-        else
-            error.setText("Votre profil a été modifié avec succes !");
+        else{
+            Toast toast = Toast.makeText(getApplicationContext(),"Profil modifié avec succés",Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     public void back(View view) {

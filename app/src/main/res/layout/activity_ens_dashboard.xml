@@ -15,23 +15,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:onClick="back"
-            app:backgroundTint="@color/colorPrimaryDark"
-            app:fabSize="normal"
-            app:srcCompat="?android:attr/actionModeCloseDrawable" />
-
         <TextView
             android:id="@+id/title"
-            android:layout_width="268dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="0.92"
             android:fontFamily="casual"
+            android:gravity="center"
             android:paddingLeft="30dp"
             android:text="Enseignant"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
