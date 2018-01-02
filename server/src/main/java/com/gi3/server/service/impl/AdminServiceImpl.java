@@ -5,6 +5,7 @@ import com.gi3.server.domain.users.Admin;
 import com.gi3.server.domain.users.Enseignant;
 import com.gi3.server.domain.users.Etudiant;
 import com.gi3.server.domain.users.Utilisateur;
+import com.gi3.server.dto.AvisDTO;
 import com.gi3.server.dto.UtilisateurDTO;
 import com.gi3.server.repo.AvisRepo;
 import com.gi3.server.repo.GroupeRepo;
@@ -16,8 +17,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author kadarH
@@ -88,9 +92,26 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<Avis> listAvix() {
-        return avisRepo.findAll();
+    public Set<AvisDTO> listAvix() {
+
+        Set<AvisDTO> avisDTOs = new HashSet<>();
+        AvisDTO avisDTO = new AvisDTO();
+        List<Avis> avisList = avisRepo.findAll();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        for (Avis avis: avisList){
+            avisDTO = new AvisDTO();
+            avisDTO.setId(avis.getId());
+            avisDTO.setEnseignant(avis.getEnseignant().getNom()+" "+avis.getEnseignant().getPrenom());
+            avisDTO.setDate(avis.getDate().format(dateTimeFormatter));
+            avisDTO.setMessage(avis.getMessage());
+            avisDTO.setGroupe(avis.getGroupe());
+            avisDTO.setNiveau(avis.getNiveau());
+            avisDTO.setFiliere(avis.getFiliere());
+            avisDTOs.add(avisDTO);
+        }
+        return avisDTOs;
     }
+
 
     @Override
     public void deleteUser(Long id, String role) {

@@ -38,11 +38,7 @@ public class EnseignantController {
      */
     @PostMapping("/{id}/add")
     @ResponseBody
-    public ResponseEntity<String> addAvis(@RequestPart MultipartFile doc, @RequestPart String message, @RequestPart String groupe, @PathVariable Long id) throws IOException {
-        AvisDTO avisDTO = new AvisDTO();
-        avisDTO.setMessage(message);
-        avisDTO.setDoc(doc.getBytes());
-        avisDTO.setGroupe(groupe);
+    public ResponseEntity<String> addAvis(@RequestBody AvisDTO avisDTO, @PathVariable Long id) throws IOException {
         enseignantService.add(avisDTO, id);
         return new ResponseEntity<>("200", HttpStatus.OK);
     }
@@ -52,7 +48,7 @@ public class EnseignantController {
      */
 
     @GetMapping("/{id}/avis")
-    public Set<Avis> avisList(@PathVariable Long id) {
+    public Set<AvisDTO> avisList(@PathVariable Long id) {
         return enseignantService.listAvix(id);
     }
 

@@ -21,4 +21,12 @@ public class Enseignant extends Utilisateur {
     @JsonIgnore
     @OneToMany(mappedBy = "enseignant")
     private Set<Avis> avisSet = new HashSet<>();
+
+    public Set<Avis> getAvisSet() {
+        return avisSet;
+    }
+
+    public void setAvisSet(Set<Avis> avisSet) {
+        this.avisSet = avisSet;
+    }
 }

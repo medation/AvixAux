@@ -2,7 +2,9 @@ package com.gi3.avisaux.service;
 
 import com.gi3.avisaux.domain.Avis;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -14,18 +16,24 @@ import java.util.List;
 
 public class EnseignantService {
 
-    private static String base_url = "http://192.168.49.1:8080";
+    private static String base_url = UtilisateurService.base_url;
 
     private RestTemplate restTemplate = new RestTemplate();
 
 
-    public List<Avis> getMyAvis() {
-        List<Avis> avis = new ArrayList<>();
-        Avis avis1 = new Avis(1, "Lsfzefzefum dolor , consefzefzfzefzefer id velit id, vestibulum auc sapien. Sed quis mauris eget sem imperdiet rhoncus.", "Professeur ZE", "Groupe sx", "Niveau aq", "Filiere x", "25/12/2017 23:20");
-        Avis avis2 = new Avis(1, "Lorem zefzefzeflor ", "Professeur BV", "Groupe T", "Niveau A", "Filiere K", "28/12/2017 14:20");
-        avis.add(avis1);
-        avis.add(avis2);
-        return avis;
+    public String addAvis(Avis avis,int id){
+
+        String url = base_url + "/enseignant/"+id+"/add";
+        HttpEntity<Avis> request = new HttpEntity<>(avis);
+        ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.POST, request, String.class);
+        String status = responseEntity.getBody();
+        return status;
+    }
+
+
+    public List<Avis> getMyAvis(int id) {
+        String url = base_url + "/enseignant/"+id+"/avis";
+        return restTemplate.exchange(url, HttpMethod.GET,null, new ParameterizedTypeReference<List<Avis>>() {}).getBody();
     }
 
 

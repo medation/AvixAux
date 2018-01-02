@@ -32,7 +32,7 @@ public class AvisListEtudiantActivity extends ListActivity {
     }
 
     public void loadList() {
-        setListAdapter(new AvisArrayAdapter(this, etudiantService.getAvisEtudiant(etudiant.getId()),false,true));
+        setListAdapter(new AvisArrayAdapter(this, etudiantService.getAvisEtudiant(etudiant.getId()),false,true,getIntent()));
     }
 
     public void back(View view) {

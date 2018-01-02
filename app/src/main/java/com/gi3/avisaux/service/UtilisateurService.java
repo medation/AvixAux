@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 public class UtilisateurService {
 
-    private static String base_url = "http://192.168.1.15:8080";
+    public static String base_url = "http://192.168.1.15:8080";
     private RestTemplate restTemplate = new RestTemplate();
 
     public int modifierProfil(Utilisateur user){

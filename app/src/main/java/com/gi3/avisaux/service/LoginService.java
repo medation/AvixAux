@@ -14,7 +14,7 @@ import java.util.List;
 
 public class LoginService {
 
-    private static String base_url = "http://192.168.1.15:8080";
+    private static String base_url = UtilisateurService.base_url;
     private RestTemplate restTemplate = new RestTemplate();
 
     public Utilisateur login(final String usernameparam, final String passparam){

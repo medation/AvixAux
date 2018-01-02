@@ -23,7 +23,7 @@ import java.util.List;
 
 public class AdminService {
 
-    private static String base_url = "http://192.168.1.15:8080";
+    private static String base_url = UtilisateurService.base_url;
     private RestTemplate restTemplate = new RestTemplate();
 
     public int addUser(Utilisateur user){
@@ -49,13 +49,14 @@ public class AdminService {
         restTemplate.delete(url);
     }
 
-    public List<Avis> getAllAvis(){
-        List<Avis> avis = new ArrayList<>();
-        Avis avis1 = new Avis(1,"Lorem ipsum dolor , consectetur adipiscing elit. Nunc purus ligula, ullamcorper id velit id, vestibulum auc sapien. Sed quis mauris eget sem imperdiet rhoncus.","Professeur X","Groupe Y","Niveau Z","Filiere K","25/12/2017 23:20");
-        Avis avis2 = new Avis(1,"Lorem ipsum dolor ","Professeur X","Groupe T","Niveau A","Filiere K","28/12/2017 14:20");
-        avis.add(avis1);
-        avis.add(avis2);
-        return avis;
+    public List<Avis> getAllAvis() {
+        String url = base_url + "/admin/avis";
+        return restTemplate.exchange(url, HttpMethod.GET,null, new ParameterizedTypeReference<List<Avis>>() {}).getBody();
+    }
+
+    public void deleteAvis(int id){
+        String url = base_url + "/admin/avis/"+ id + "/delete";
+        restTemplate.delete(url);
     }
 
 }

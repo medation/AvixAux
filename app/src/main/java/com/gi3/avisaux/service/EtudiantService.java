@@ -2,6 +2,10 @@ package com.gi3.avisaux.service;
 
 import com.gi3.avisaux.domain.Avis;
 
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.web.client.RestTemplate;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,10 +15,11 @@ import java.util.List;
 
 public class EtudiantService {
 
-    public List<Avis> getAvisEtudiant(int idEtudiant) {
-        return Arrays.asList(
-                new Avis(3, "jzenfkzenjfznefzjenlfzef", "lzelmfkme", "kklz,ekl,z", "klkdjelzjdlze", "kjzlekfjzlef", "kdljdzlejd"),
-                new Avis(4, "jzedddddddddddddddddddddddd", "zzzzzzzzzzzzzzzzzzzzzzz", "kklz,ekl,z", "klkdjelzjdlze", "kjzlekfjzlef", "kdljdzlejd")
-        );
+    private static String base_url = UtilisateurService.base_url;
+    private RestTemplate restTemplate = new RestTemplate();
+
+    public List<Avis> getAvisEtudiant(int id) {
+        String url = base_url + "/etudiant/"+id+"/avis";
+        return restTemplate.exchange(url, HttpMethod.GET,null, new ParameterizedTypeReference<List<Avis>>() {}).getBody();
     }
 }

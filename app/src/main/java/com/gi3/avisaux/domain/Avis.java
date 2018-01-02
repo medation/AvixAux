@@ -12,7 +12,6 @@ public class Avis {
     private String groupe;
     private String niveau;
     private String filiere;
-    private byte[] doc;
     private String date;
 
     public Avis() {
@@ -28,14 +27,13 @@ public class Avis {
         this.date = date;
     }
 
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public Avis(String message, String enseignant, String groupe, String niveau, String filiere, String date) {
+        this.message = message;
+        this.enseignant = enseignant;
+        this.groupe = groupe;
+        this.niveau = niveau;
+        this.filiere = filiere;
+        this.date = date;
     }
 
     public String getMessage() {
@@ -78,19 +76,19 @@ public class Avis {
         this.filiere = filiere;
     }
 
-    public byte[] getDoc() {
-        return doc;
-    }
-
-    public void setDoc(byte[] doc) {
-        this.doc = doc;
-    }
-
     public String getDate() {
         return date;
     }
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -28,7 +28,7 @@ public class AvisListActivity extends ListActivity {
     }
 
     public void loadList(){
-        setListAdapter(new AvisArrayAdapter(this,adminService.getAllAvis(),true,false));
+        setListAdapter(new AvisArrayAdapter(this,adminService.getAllAvis(),true,false,getIntent()));
     }
 
     public void back(View view) {

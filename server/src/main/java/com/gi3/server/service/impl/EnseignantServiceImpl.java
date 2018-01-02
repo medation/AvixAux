@@ -4,6 +4,7 @@ import com.gi3.server.domain.Avis;
 import com.gi3.server.domain.Filiere;
 import com.gi3.server.domain.Groupe;
 import com.gi3.server.domain.Niveau;
+import com.gi3.server.domain.users.Enseignant;
 import com.gi3.server.domain.users.Etudiant;
 import com.gi3.server.dto.AvisDTO;
 import com.gi3.server.repo.AvisRepo;
@@ -13,10 +14,13 @@ import com.gi3.server.repo.NiveauRepo;
 import com.gi3.server.repo.users.EnseignantRepo;
 import com.gi3.server.service.EnseignantService;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.format.datetime.DateFormatter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -44,8 +48,24 @@ public class EnseignantServiceImpl implements EnseignantService {
     }
 
     @Override
-    public Set<Avis> listAvix(Long id_enseignant) {
-        return enseignantRepo.findOne(id_enseignant).getAvisSet();
+    public Set<AvisDTO> listAvix(Long id_enseignant) {
+
+        Set<AvisDTO> avisDTOs = new HashSet<>();
+        AvisDTO avisDTO = new AvisDTO();
+        Enseignant enseignant = enseignantRepo.getOne(id_enseignant);
+        Set<Avis> avisSet = enseignant.getAvisSet();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        for (Avis avis: avisSet){
+            avisDTO = new AvisDTO();
+            avisDTO.setId(avis.getId());
+            avisDTO.setDate(avis.getDate().format(dateTimeFormatter));
+            avisDTO.setMessage(avis.getMessage());
+            avisDTO.setGroupe(avis.getGroupe());
+            avisDTO.setNiveau(avis.getNiveau());
+            avisDTO.setFiliere(avis.getFiliere());
+            avisDTOs.add(avisDTO);
+        }
+        return avisDTOs;
     }
 
     @Override
@@ -53,11 +73,12 @@ public class EnseignantServiceImpl implements EnseignantService {
         String nom_filiere = avisDTO.getFiliere();
         String nom_niveau = avisDTO.getNiveau();
         String nom_groupe = avisDTO.getGroupe();
-        String username_professeur = avisDTO.getEnseignant();
         Avis avis = new Avis();
-        avis.setEnseignant(enseignantRepo.findByUserName(username_professeur));
+        avis.setGroupe(nom_groupe);
+        avis.setNiveau(nom_niveau);
+        avis.setFiliere(nom_filiere);
+        avis.setEnseignant(enseignantRepo.getOne(id_enseignant));
         avis.setDate(LocalDateTime.now());
-        avis.setDoc(avisDTO.getDoc());
         avis.setMessage(avisDTO.getMessage());
         if (!nom_groupe.equals("") && nom_groupe != null) {
             groupeRepo.findByNom(nom_groupe).getEtudiantSet().stream().forEach(etudiant -> avis.addToSet(etudiant));

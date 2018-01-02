@@ -11,7 +11,7 @@ import java.util.Set;
 
 public interface EnseignantService {
 
-    Set<Avis> listAvix(Long id_enseignant);
+    Set<AvisDTO> listAvix(Long id_enseignant);
 
     Avis add(AvisDTO avisDTO, Long id_enseignant);
 

@@ -17,7 +17,6 @@ import java.util.Set;
  * @author kadarH
  */
 @Entity
-@Data
 @ToString(exclude = {"etudiantSet", "enseignant"})
 @EqualsAndHashCode(exclude = {"etudiantSet", "enseignant"})
 public class Avis {
@@ -26,6 +25,9 @@ public class Avis {
     @GeneratedValue
     private Long id;
     private String message;
+    private String filiere;
+    private String niveau;
+    private String groupe;
 
     @ManyToOne
     private Enseignant enseignant;
@@ -34,9 +36,6 @@ public class Avis {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "etudiant_avis", joinColumns = @JoinColumn(name = "etudiant_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "avis_id", referencedColumnName = "id"))
     private Set<Etudiant> etudiantSet = new HashSet<>();
-
-    @Lob
-    private byte[] doc;
 
     private LocalDateTime date;
 
@@ -48,4 +47,67 @@ public class Avis {
         etudiantSet.remove(etudiant);
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Enseignant getEnseignant() {
+        return enseignant;
+    }
+
+    public void setEnseignant(Enseignant enseignant) {
+        this.enseignant = enseignant;
+    }
+
+    public Set<Etudiant> getEtudiantSet() {
+        return etudiantSet;
+    }
+
+    public void setEtudiantSet(Set<Etudiant> etudiantSet) {
+        this.etudiantSet = etudiantSet;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
+    public String getFiliere() {
+        return filiere;
+    }
+
+    public void setFiliere(String filiere) {
+        this.filiere = filiere;
+    }
+
+    public String getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(String niveau) {
+        this.niveau = niveau;
+    }
+
+    public String getGroupe() {
+        return groupe;
+    }
+
+    public void setGroupe(String groupe) {
+        this.groupe = groupe;
+    }
 }

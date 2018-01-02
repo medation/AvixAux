@@ -5,4 +5,5 @@
         <item>etudiant</item>
         <item>enseignant</item>
     </string-array>
+    <string name="app_description">Une application pour le partage des avis entre enseignants et leurs étudiants selon sa filière, son niveau et son groupe.</string>
 </resources>
