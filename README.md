@@ -15,7 +15,7 @@
 ## Etudiant
 
 <p align="center">
-	<img src="screen/DashboardEtuActivity.png" width="12%"/>
+	<img src="screen/DashboardEtuActivity.png" width="20%"/>
 	<img src="screen/ListAvisEtudiant.png" width="20%"/>
 	<img src="screen/ProfilActivity.png" width="20%"/>
 </p>
@@ -23,18 +23,18 @@
 ## Enseignant
 
 <p align="center">
-	<img src="screen/DashboardEnsActivity.png" width="12%"/>
+	<img src="screen/DashboardEnsActivity.png" width="20%"/>
 	<img src="screen/AddAvisActivity.png" width="20%"/>
-	<img src="screen/ListAvisActivty.png" width="20%"/>
+	<img src="screen/ListAvisActivity.png" width="20%"/>
 	<img src="screen/ProfilActivity.png" width="20%"/>
 </p>
 
 ## Administrateur
 
 <p align="center">
-	<img src="screen/AdminDashboardActivity.png" width="12%"/>
+	<img src="screen/AdminDashboardActivity.png" width="20%"/>
 	<img src="screen/AddUserActivity.png" width="20%"/>
-	<img src="screen/ListUserActivty.png" width="20%"/>
-	<img src="screen/ListAvisActivty.png" width="20%"/>
+	<img src="screen/ListUserActivity.png" width="20%"/>
+	<img src="screen/ListAvisActivity.png" width="20%"/>
 	<img src="screen/ProfilActivity.png" width="20%"/>
 </p>
